@@ -112,7 +112,7 @@ module AxleEye() {
 }
 
 module Chasis() {
-  color(83/255.0,86/255.0,90/255.0) {
+  color([83/255.0,86/255.0,90/255.0]) {
     difference() {
       Hull();
       Cabin();
