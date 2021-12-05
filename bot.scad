@@ -13,7 +13,7 @@ $fn=60;
 
 //-------------------------------------------
 //
-// dims
+// dims (in cm)
 //
 //-------------------------------------------
 
@@ -138,23 +138,28 @@ module Steppers(){
   }
 }
 
-difference() {
-  Chasis();
-  translate(daxle) {
-    {
-      translate([hull_x/2-stepper_height/2,0,0]) {
-        rotate([0,90,0]) FourHoles();
-      }
-      translate([-hull_x/2-stepper_height/2,0,0]){
-        rotate([0,90,0]) FourHoles();
+module BotWithoutComponents(){
+  difference() {
+    Chasis();
+    translate(daxle) {
+      {
+        translate([hull_x/2-stepper_height/2,0,0]) {
+          rotate([0,90,0]) FourHoles();
+        }
+        translate([-hull_x/2-stepper_height/2,0,0]){
+          rotate([0,90,0]) FourHoles();
+        }
       }
     }
   }
-
 }
 
-
-
-translate(daxle) {
-  Steppers();
+module BotWithComponents(){
+  BotWithoutComponents();
+  translate(daxle) {
+    Steppers();
+  }
 }
+
+BotWithoutComponents();
+//BotWithComponents();
